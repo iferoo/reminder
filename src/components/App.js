@@ -22,14 +22,20 @@ class App extends Component {
         {reminders.map((reminder) => {
           return (
             <li className="list-group-item" key={reminder.id}>
-              <div>{reminder.text}</div>
-              <div>{moment(new Date(reminder.date)).fromNow()}</div>
-              <button
-                className="remove btn btn-danger closeIcon"
-                onClick={() => this.props.remove_Reminder(reminder.id)}
-              >
-                x
-              </button>
+              <div className="container">
+                <div>
+                  <div>{reminder.text}</div>
+                  <div>{moment(new Date(reminder.date)).fromNow()}</div>
+                </div>
+                <div>
+                  <button
+                    className="remove btn btn-danger closeIcon"
+                    onClick={() => this.props.remove_Reminder(reminder.id)}
+                  >
+                    x
+                  </button>
+                </div>
+              </div>
             </li>
           );
         })}
@@ -39,7 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <img src="/reminder.png" alt="reminder"/>
+        <img src="/reminder.png" alt="reminder" />
         <div className="reminder-title">
           <h2>What Should U Do ?</h2>
         </div>
@@ -66,7 +72,7 @@ class App extends Component {
           className="btn btn-primary w-100"
           onClick={() => {
             this.props.add_Reminder(this.state.text, this.state.date);
-            this.setState({text: "", date: null})
+            this.setState({ text: "", date: null });
           }}
         >
           Add Reminder
